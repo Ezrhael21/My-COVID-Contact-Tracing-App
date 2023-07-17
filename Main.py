@@ -3,16 +3,12 @@
 # 07/17/2023
 # Covid Contact Tracing App
 
-import tkinter as tk
-from tkinter import ttk
-
-# Create the Window
-window = tk.Tk()
-window.title("ES COVID Contact Tracing App")
-window.geometry("800x500")
+from Application import UserInterface
 
 # Run
-window.mainloop()
+if __name__ == "__main__":
+    app = UserInterface()
+    app.mainloop()
 
 # Pseudocode
 # Import Tkinter
