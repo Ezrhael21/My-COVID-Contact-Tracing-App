@@ -3,6 +3,9 @@
 # 07/17/2023
 # Covid Contact Tracing App
 
+import tkinter as tk
+from tkinter import ttk
+
 # Pseudocode
 # Import Tkinter
 # Class for User Interface
