@@ -6,6 +6,14 @@
 import tkinter as tk
 from tkinter import ttk
 
+# Create the Window
+window = tk.Tk()
+window.title("ES COVID Contact Tracing App")
+window.geometry("800x500")
+
+# Run
+window.mainloop()
+
 # Pseudocode
 # Import Tkinter
 # Class for User Interface
@@ -52,4 +60,4 @@ from tkinter import ttk
 # Method to load data from JSON file
 # Method to search data form JSON file
 # Call the User Interface
-# Create the Window
+
