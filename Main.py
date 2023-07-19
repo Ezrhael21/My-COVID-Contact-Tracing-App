@@ -12,8 +12,8 @@ if __name__ == "__main__":
 
 # Pseudocode
 # Import Tkinter
-# Class for User Interface
-# Initilaize the frame
+# Class for App Interface
+# Create a Class for Frame of Personal Information
 # Method to Create Widget for the following:
     # Introduce the Application
     # 1. Personal Information

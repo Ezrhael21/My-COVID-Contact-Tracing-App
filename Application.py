@@ -1,4 +1,5 @@
 import customtkinter as ctk
+from Personal_Info import PersonalInfo
 
 # Create a class for user interface
 class App(ctk.CTk):
@@ -6,4 +7,6 @@ class App(ctk.CTk):
         super().__init__()
         self.title("ES COVID Contact Tracing App")
         self.geometry("400x700")
+
+        self.personal_info = PersonalInfo(self)
     
