@@ -1,13 +1,9 @@
-import tkinter as tk
-from tkinter import ttk
-from Personal_Information import PersonalInfo
+import customtkinter as ctk
 
 # Create a class for user interface
-class UserInterface(tk.Tk):
+class App(ctk.CTk):
     def __init__(self):
         super().__init__()
         self.title("ES COVID Contact Tracing App")
-        self.geometry("800x500")
-        self.personal_info = PersonalInfo(self)
-
+        self.geometry("400x700")
     

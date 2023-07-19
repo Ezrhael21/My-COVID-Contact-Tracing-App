@@ -3,11 +3,11 @@
 # 07/17/2023
 # Covid Contact Tracing App
 
-from Application import UserInterface
+from Application import App
 
 # Run
 if __name__ == "__main__":
-    app = UserInterface()
+    app = App()
     app.mainloop()
 
 # Pseudocode
