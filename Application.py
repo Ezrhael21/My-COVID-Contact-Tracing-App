@@ -2,6 +2,7 @@ import customtkinter as ctk
 from Personal_Info import PersonalInfo
 from Covid_Diagnosis import CovidDiagnosis
 from Welcome import Welcome
+from Personal_Info import PersonalInfo
 
 # Create a class for user interface
 class App(ctk.CTk):

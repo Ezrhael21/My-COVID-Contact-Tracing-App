@@ -1,4 +1,6 @@
 import customtkinter as ctk
+from Personal_Info import PersonalInfo
+
 class Welcome(ctk.CTkFrame):
 	def __init__(self,parent):
 		super().__init__(parent)
@@ -18,5 +20,11 @@ class Welcome(ctk.CTkFrame):
 	def create_widgets(self):
 		self.columnconfigure((0,1), weight = 1)
 		self.rowconfigure((0,1,2,3,4,5), weight = 1)
-		get_started_button = ctk.CTkButton(self, text = "Get Started")
-		get_started_button.grid(row=4, column=1, padx=20, pady=20)		
+		get_started_button = ctk.CTkButton(self, text = "Get Started", command = self.show_personal_info)
+		get_started_button.grid(row=4, column=1, padx=20, pady=20)
+			
+	def show_personal_info(self):
+		self.pack_forget()
+	
+		personal_info_frame = PersonalInfo(self.master)
+		personal_info_frame.pack(side="top", expand=True, fill="both")	

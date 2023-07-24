@@ -1,11 +1,12 @@
 import customtkinter as ctk
+
 class PersonalInfo(ctk.CTkFrame):
 	def __init__(self,parent):
 		super().__init__(parent)
 		self.pack(side = "top", expand = "True", fill = "both")
 
 		self.create_widgets()
-		
+
 	def create_widgets(self):
 		info_label = ctk.CTkLabel(self, text = "Personal Information:")
 		name_label = ctk.CTkLabel(self, text = "Name:")
@@ -43,3 +44,15 @@ class PersonalInfo(ctk.CTkFrame):
 		contacts_entry.grid(row=5, column=1, padx=10, pady=10)
 		email_entry.grid(row=6, column=1, padx=10, pady=10)
 		address_entry.grid(row=7, column=1, padx=10, pady=10)
+
+		back_button = ctk.CTkButton(self, text = "BACK", command = self.show_welcome)
+		next_button = ctk.CTkButton(self, text = "NEXT")
+		back_button.grid(row=10, column=0, padx=10, pady=10)
+		next_button.grid(row=10, column=1, padx=10, pady=10)
+
+	def show_welcome(self):
+        # Hide the current PersonalInfo frame
+		self.pack_forget()
+		from Welcome import Welcome
+		welcome_frame = Welcome(self.master)
+		welcome_frame.pack(side="top", expand=True, fill="both")
