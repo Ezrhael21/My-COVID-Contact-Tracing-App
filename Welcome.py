@@ -4,6 +4,7 @@ class Welcome(ctk.CTkFrame):
 		super().__init__(parent)
 		self.pack(side = "top", expand = "True", fill = "both")
 		self.introduction()
+		self.create_widgets()
 
 	def introduction(self):
 		title_label = ctk.CTkLabel(self, text = "Welcome to ES Covid Tracing App", font=("Helvetica", 30, "bold"))
@@ -14,4 +15,8 @@ class Welcome(ctk.CTkFrame):
 		title2_label.place(x=50, y=150)
 		title3_label.place(x=50, y=300)
 		
-		
+	def create_widgets(self):
+		self.columnconfigure((0,1), weight = 1)
+		self.rowconfigure((0,1,2,3,4,5), weight = 1)
+		get_started_button = ctk.CTkButton(self, text = "Get Started")
+		get_started_button.grid(row=4, column=1, padx=20, pady=20)		
