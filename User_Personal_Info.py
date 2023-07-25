@@ -1,5 +1,6 @@
 import json
 
+# Create a class for user data
 class UserData:
     def __init__(self, name, age, birthday, gender, contacts, email, address, reference_number):
         self.name = name

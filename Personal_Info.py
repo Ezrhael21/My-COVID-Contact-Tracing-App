@@ -4,6 +4,7 @@ from tkinter import messagebox
 import json
 import random
 
+# Create a class for Personal Info Frame
 class PersonalInfo(ctk.CTkFrame):
 	def __init__(self,parent):
 		super().__init__(parent)
@@ -11,7 +12,9 @@ class PersonalInfo(ctk.CTkFrame):
 		self.create_widgets()
 		self.create_buttons()
 
+	# Method to create widgets for Personal Info 
 	def create_widgets(self):
+		# Label
 		info_label = ctk.CTkLabel(self, text = "Personal Information", font=("Helvetica", 20, "bold"))
 		name_label = ctk.CTkLabel(self, text = "Name:")
 		age_label = ctk.CTkLabel(self, text = "Age:")
@@ -21,6 +24,7 @@ class PersonalInfo(ctk.CTkFrame):
 		email_label = ctk.CTkLabel(self, text = "Email Address:")
 		address_label = ctk.CTkLabel(self, text = "Current Home Address:")
 
+		# Layout for Label
 		info_label.place(x=50, y=50)
 		name_label.place(x=50, y=100)
 		age_label.place(x=50, y=150)
@@ -30,6 +34,7 @@ class PersonalInfo(ctk.CTkFrame):
 		email_label.place(x=50, y=350)
 		address_label.place(x=50, y=400)
 
+		# Entry Widgets
 		self.name_entry = ctk.CTkEntry(self)
 		self.age_entry = ctk.CTkEntry(self)
 		self.birthday_entry = ctk.CTkEntry(self)
@@ -38,6 +43,7 @@ class PersonalInfo(ctk.CTkFrame):
 		self.email_entry = ctk.CTkEntry(self)
 		self.address_entry = ctk.CTkEntry(self)
 
+		# Layout for Entry Widgets
 		self.name_entry.place(x=400, y=100)
 		self.age_entry.place(x=400, y=150)
 		self.birthday_entry.place(x=400, y=200)
@@ -46,11 +52,12 @@ class PersonalInfo(ctk.CTkFrame):
 		self.email_entry.place(x=400, y=350)
 		self.address_entry.place(x=400, y=400)
 
+	# Method to create the Back/Submit Buttons
 	def create_buttons(self):
 		self.columnconfigure((0,1), weight = 1)
 		self.rowconfigure((0,1,2,3,4,5), weight = 1)
 		back_button = ctk.CTkButton(self, text = "BACK", command = self.show_terms_conditions)
-		next_button = ctk.CTkButton(self, text = "NEXT", command = self.save_to_json)
+		next_button = ctk.CTkButton(self, text = "SUBMIT", command = self.save_to_json)
 		back_button.grid(row=5, column=0, padx=10, pady=10)
 		next_button.grid(row=5, column=1, padx=10, pady=10)
 
@@ -59,6 +66,8 @@ class PersonalInfo(ctk.CTkFrame):
         # Hide the current PersonalInfo frame
 		self.pack_forget()
 		from Terms_Conditions import TermsConditions
+
+		# Call the Terms & Conditions Frame
 		welcome_frame = TermsConditions(self.master)
 		welcome_frame.pack(side="top", expand=True, fill="both")
 	
