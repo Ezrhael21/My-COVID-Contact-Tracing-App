@@ -1,5 +1,6 @@
 import customtkinter as ctk
 from User_Personal_Info import UserData
+from tkinter import messagebox
 
 class PersonalInfo(ctk.CTkFrame):
 	def __init__(self,parent):
@@ -26,7 +27,7 @@ class PersonalInfo(ctk.CTkFrame):
 		contacts_label.place(x=50, y=300)
 		email_label.place(x=50, y=350)
 		address_label.place(x=50, y=400)
-		
+
 		name_entry = ctk.CTkEntry(self)
 		age_entry = ctk.CTkEntry(self)
 		birthday_entry = ctk.CTkEntry(self)
@@ -42,28 +43,12 @@ class PersonalInfo(ctk.CTkFrame):
 		contacts_entry.place(x=400, y=300)
 		email_entry.place(x=400, y=350)
 		address_entry.place(x=400, y=400)
-		
-		# Get Entry Values for Personal Information
-		name = name_entry.get()
-		age = age_entry.get()
-		birthday = birthday_entry.get()
-		gender = gender_entry.get()
-		contacts = contacts_entry.get()
-		email = email_entry.get()
-		address = address_entry.get()
-
-		# Create the user data object
-		user_personal_info = UserData(name, age, birthday, gender, contacts, email, address)
-		
-        # Save the UserData object to a JSON file
-		user_personal_info.save_to_json_file("user_data.json")
-
 
 	def create_buttons(self):
 		self.columnconfigure((0,1), weight = 1)
 		self.rowconfigure((0,1,2,3,4,5), weight = 1)
 		back_button = ctk.CTkButton(self, text = "BACK", command = self.show_terms_conditions)
-		next_button = ctk.CTkButton(self, text = "NEXT")
+		next_button = ctk.CTkButton(self, text = "NEXT", command = self.save_to_json)
 		back_button.grid(row=5, column=0, padx=10, pady=10)
 		next_button.grid(row=5, column=1, padx=10, pady=10)
 
@@ -73,3 +58,27 @@ class PersonalInfo(ctk.CTkFrame):
 		from Terms_Conditions import TermsConditions
 		welcome_frame = TermsConditions(self.master)
 		welcome_frame.pack(side="top", expand=True, fill="both")
+
+	def save_to_json(self):
+		try:
+		# Get Entry Values for Personal Information
+			name = self.name_entry.get()
+			age = self.age_entry.get()
+			birthday = self.birthday_entry.get()
+			gender = self.gender_entry.get()
+			contacts = self.contacts_entry.get()
+			email = self.email_entry.get()
+			address = self.address_entry.get()
+			
+			# Create the user data object
+			user_personal_info = UserData(name, age, birthday, gender, contacts, email, address)
+
+			# Save the UserData object to a JSON file
+			user_personal_info.save_to_json_file("user_data.json")
+
+		except ValueError:
+			messagebox.showinfo("Message", "Please answer all the required information.")
+		
+        	
+
+
