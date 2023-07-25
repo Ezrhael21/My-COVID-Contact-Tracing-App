@@ -1,6 +1,8 @@
 import customtkinter as ctk
 from User_Personal_Info import UserData
 from tkinter import messagebox
+import json
+import random
 
 class PersonalInfo(ctk.CTkFrame):
 	def __init__(self,parent):
@@ -60,6 +62,18 @@ class PersonalInfo(ctk.CTkFrame):
 		welcome_frame = TermsConditions(self.master)
 		welcome_frame.pack(side="top", expand=True, fill="both")
 	
+	# Method to generate a unique reference number
+	def generate_reference_number(self, name, age):
+        # Combine name and age to create a unique string
+		name_age_str = name + str(age)
+
+        # Generate a random number between 1000 and 9999
+		random_num = random.randint(1000, 9999)
+
+        # Combine the name/age string with the random number to get the reference number
+		reference_number = name_age_str + str(random_num)
+		return reference_number	
+	
 	# Method to save to json file
 	def save_to_json(self):
 		try:
@@ -76,7 +90,8 @@ class PersonalInfo(ctk.CTkFrame):
 			user_personal_info = UserData(name, age, birthday, gender, contacts, email, address)
 
 			# Save the UserData object to a JSON file
-			user_personal_info.save_to_json_file("user_data.json")
+			with open("user_data.json", "w") as file:
+				file.write(user_personal_info.to_json())
 
 		except ValueError:
 			messagebox.showinfo("Message", "Please answer all the required information.")
