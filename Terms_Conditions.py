@@ -7,6 +7,7 @@ class TermsConditions(ctk.CTkFrame):
 		self.pack(side = "top", expand = "True", fill = "both")
 		self.introduction()
 		self.create_widgets()
+		self.check_box()
 
 	def introduction(self):
 		title_label = ctk.CTkLabel(self, text = "Terms & Conditions", font=("Helvetica", 20, "bold"))
@@ -33,6 +34,10 @@ class TermsConditions(ctk.CTkFrame):
 		next_button = ctk.CTkButton(self, text = "NEXT", command = self.show_personal_info)
 		back_button.grid(row=5, column=0, padx=10, pady=10)
 		next_button.grid(row=5, column=1, padx=10, pady=10)
+	
+	def check_box(self):
+		check_box = ctk.CTkCheckBox(self, text="I Accept the Terms and Conditions")
+		check_box.place(x=50, y=450)
 
 	def show_welcome(self):
 		self.pack_forget()
