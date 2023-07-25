@@ -4,11 +4,11 @@ class PersonalInfo(ctk.CTkFrame):
 	def __init__(self,parent):
 		super().__init__(parent)
 		self.pack(side = "top", expand = "True", fill = "both")
-
 		self.create_widgets()
+		self.create_buttons()
 
 	def create_widgets(self):
-		info_label = ctk.CTkLabel(self, text = "Personal Information:")
+		info_label = ctk.CTkLabel(self, text = "Personal Information", font=("Helvetica", 20, "bold"))
 		name_label = ctk.CTkLabel(self, text = "Name:")
 		age_label = ctk.CTkLabel(self, text = "Age:")
 		birthday_label = ctk.CTkLabel(self, text = "Date of Birth:")
@@ -16,18 +16,15 @@ class PersonalInfo(ctk.CTkFrame):
 		contacts_label = ctk.CTkLabel(self, text = "Contact Number:")
 		email_label = ctk.CTkLabel(self, text = "Email Address:")
 		address_label = ctk.CTkLabel(self, text = "Current Home Address:")
-		
-		self.columnconfigure((0,1), weight = 1)
-		self.rowconfigure((0,1,2,3,4,5,6,7,8,9,10), weight = 1)
 
-		info_label.grid(row=0, column=0, padx=10, pady=10, sticky="w")
-		name_label.grid(row=1, column=0, padx=10, pady=10, sticky="w")
-		age_label.grid(row=2, column=0, padx=10, pady=10, sticky="w")
-		birthday_label.grid(row=3, column=0, padx=10, pady=10, sticky="w")
-		gender_label.grid(row=4, column=0, padx=10, pady=10, sticky="w")
-		contacts_label.grid(row=5, column=0, padx=10, pady=10, sticky="w")
-		email_label.grid(row=6, column=0, padx=10, pady=10, sticky="w")
-		address_label.grid(row=7, column=0, padx=10, pady=10, sticky="w")
+		info_label.place(x=50, y=50)
+		name_label.place(x=50, y=100)
+		age_label.place(x=50, y=150)
+		birthday_label.place(x=50, y=200)
+		gender_label.place(x=50, y=250)
+		contacts_label.place(x=50, y=300)
+		email_label.place(x=50, y=350)
+		address_label.place(x=50, y=400)
 		
 		name_entry = ctk.CTkEntry(self)
 		age_entry = ctk.CTkEntry(self)
@@ -37,18 +34,21 @@ class PersonalInfo(ctk.CTkFrame):
 		email_entry = ctk.CTkEntry(self)
 		address_entry = ctk.CTkEntry(self)
 
-		name_entry.grid(row=1, column=1, padx=10, pady=10)
-		age_entry.grid(row=2, column=1, padx=10, pady=10)
-		birthday_entry.grid(row=3, column=1, padx=10, pady=10)
-		gender_entry.grid(row=4, column=1, padx=10, pady=10)
-		contacts_entry.grid(row=5, column=1, padx=10, pady=10)
-		email_entry.grid(row=6, column=1, padx=10, pady=10)
-		address_entry.grid(row=7, column=1, padx=10, pady=10)
+		name_entry.place(x=400, y=100)
+		age_entry.place(x=400, y=150)
+		birthday_entry.place(x=400, y=200)
+		gender_entry.place(x=400, y=250)
+		contacts_entry.place(x=400, y=300)
+		email_entry.place(x=400, y=350)
+		address_entry.place(x=400, y=400)
 
+	def create_buttons(self):
+		self.columnconfigure((0,1), weight = 1)
+		self.rowconfigure((0,1,2,3,4,5), weight = 1)
 		back_button = ctk.CTkButton(self, text = "BACK", command = self.show_terms_conditions)
 		next_button = ctk.CTkButton(self, text = "NEXT")
-		back_button.grid(row=10, column=0, padx=10, pady=10)
-		next_button.grid(row=10, column=1, padx=10, pady=10)
+		back_button.grid(row=5, column=0, padx=10, pady=10)
+		next_button.grid(row=5, column=1, padx=10, pady=10)
 
 	def show_terms_conditions(self):
         # Hide the current PersonalInfo frame
