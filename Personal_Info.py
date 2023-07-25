@@ -28,21 +28,21 @@ class PersonalInfo(ctk.CTkFrame):
 		email_label.place(x=50, y=350)
 		address_label.place(x=50, y=400)
 
-		name_entry = ctk.CTkEntry(self)
-		age_entry = ctk.CTkEntry(self)
-		birthday_entry = ctk.CTkEntry(self)
-		gender_entry = ctk.CTkEntry(self)
-		contacts_entry = ctk.CTkEntry(self)
-		email_entry = ctk.CTkEntry(self)
-		address_entry = ctk.CTkEntry(self)
+		self.name_entry = ctk.CTkEntry(self)
+		self.age_entry = ctk.CTkEntry(self)
+		self.birthday_entry = ctk.CTkEntry(self)
+		self.gender_entry = ctk.CTkEntry(self)
+		self.contacts_entry = ctk.CTkEntry(self)
+		self.email_entry = ctk.CTkEntry(self)
+		self.address_entry = ctk.CTkEntry(self)
 
-		name_entry.place(x=400, y=100)
-		age_entry.place(x=400, y=150)
-		birthday_entry.place(x=400, y=200)
-		gender_entry.place(x=400, y=250)
-		contacts_entry.place(x=400, y=300)
-		email_entry.place(x=400, y=350)
-		address_entry.place(x=400, y=400)
+		self.name_entry.place(x=400, y=100)
+		self.age_entry.place(x=400, y=150)
+		self.birthday_entry.place(x=400, y=200)
+		self.gender_entry.place(x=400, y=250)
+		self.contacts_entry.place(x=400, y=300)
+		self.email_entry.place(x=400, y=350)
+		self.address_entry.place(x=400, y=400)
 
 	def create_buttons(self):
 		self.columnconfigure((0,1), weight = 1)
@@ -52,13 +52,15 @@ class PersonalInfo(ctk.CTkFrame):
 		back_button.grid(row=5, column=0, padx=10, pady=10)
 		next_button.grid(row=5, column=1, padx=10, pady=10)
 
+	# Method to redirect to Terms & Conditions
 	def show_terms_conditions(self):
         # Hide the current PersonalInfo frame
 		self.pack_forget()
 		from Terms_Conditions import TermsConditions
 		welcome_frame = TermsConditions(self.master)
 		welcome_frame.pack(side="top", expand=True, fill="both")
-
+	
+	# Method to save to json file
 	def save_to_json(self):
 		try:
 		# Get Entry Values for Personal Information
