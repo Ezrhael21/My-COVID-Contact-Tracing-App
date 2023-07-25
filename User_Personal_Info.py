@@ -1,7 +1,7 @@
 import json
 
 class UserData:
-    def __init__(self, name, age, birthday, gender, contacts, email, address):
+    def __init__(self, name, age, birthday, gender, contacts, email, address, reference_number):
         self.name = name
         self.age = age
         self.birthday = birthday
@@ -9,6 +9,7 @@ class UserData:
         self.contacts = contacts
         self.email = email
         self.address = address
+        self.reference_number = reference_number
 
     def to_json(self):
         # Convert the UserData object to a dictionary
@@ -19,7 +20,8 @@ class UserData:
             "gender": self.gender,
             "contacts": self.contacts,
             "email": self.email,
-            "address": self.address
+            "address": self.address,
+            "reference_number": self.reference_number
         }
         return json.dumps(user_data_dict, indent=4)
 

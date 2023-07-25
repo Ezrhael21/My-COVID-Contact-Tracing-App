@@ -85,13 +85,19 @@ class PersonalInfo(ctk.CTkFrame):
 			contacts = self.contacts_entry.get()
 			email = self.email_entry.get()
 			address = self.address_entry.get()
+
+            # Generate a reference number for the user
+			reference_number = self.generate_reference_number(name, age)
 			
 			# Create the user data object
-			user_personal_info = UserData(name, age, birthday, gender, contacts, email, address)
+			user_personal_info = UserData(name, age, birthday, gender, contacts, email, address, reference_number)
 
 			# Save the UserData object to a JSON file
 			with open("user_data.json", "w") as file:
 				file.write(user_personal_info.to_json())
+
+            # Show the reference number to the user
+			messagebox.showinfo("Reference Number", f"Your reference number is: {reference_number}")			
 
 		except ValueError:
 			messagebox.showinfo("Message", "Please answer all the required information.")
