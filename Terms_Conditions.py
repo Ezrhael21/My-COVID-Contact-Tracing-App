@@ -6,6 +6,7 @@ class TermsConditions(ctk.CTkFrame):
 		super().__init__(parent)
 		self.pack(side = "top", expand = "True", fill = "both")
 		self.introduction()
+		self.create_widgets()
 
 	def introduction(self):
 		title_label = ctk.CTkLabel(self, text = "Terms & Conditions", font=("Helvetica", 20, "bold"))
@@ -25,5 +26,23 @@ class TermsConditions(ctk.CTkFrame):
 		term4_label.place(x=50, y=300)
 		term5_label.place(x=50, y=350)
 
+	def create_widgets(self):
+		self.columnconfigure((0,1), weight = 1)
+		self.rowconfigure((0,1,2,3,4,5), weight = 1)
+		back_button = ctk.CTkButton(self, text = "BACK", command = self.show_welcome)
+		next_button = ctk.CTkButton(self, text = "NEXT", command = self.show_personal_info)
+		back_button.grid(row=5, column=0, padx=10, pady=10)
+		next_button.grid(row=5, column=1, padx=10, pady=10)
+
+	def show_welcome(self):
+		self.pack_forget()
+		from Welcome import Welcome
 	
+		personal_info_frame = Welcome(self.master)
+		personal_info_frame.pack(side="top", expand=True, fill="both")	
+
+	def show_personal_info(self):
+		self.pack_forget()
+		personal_info_frame = PersonalInfo(self.master)
+		personal_info_frame.pack(side="top", expand=True, fill="both")	
 
