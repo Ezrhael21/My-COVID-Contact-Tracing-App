@@ -45,14 +45,14 @@ class PersonalInfo(ctk.CTkFrame):
 		email_entry.grid(row=6, column=1, padx=10, pady=10)
 		address_entry.grid(row=7, column=1, padx=10, pady=10)
 
-		back_button = ctk.CTkButton(self, text = "BACK", command = self.show_welcome)
+		back_button = ctk.CTkButton(self, text = "BACK", command = self.show_terms_conditions)
 		next_button = ctk.CTkButton(self, text = "NEXT")
 		back_button.grid(row=10, column=0, padx=10, pady=10)
 		next_button.grid(row=10, column=1, padx=10, pady=10)
 
-	def show_welcome(self):
+	def show_terms_conditions(self):
         # Hide the current PersonalInfo frame
 		self.pack_forget()
-		from Welcome import Welcome
-		welcome_frame = Welcome(self.master)
+		from Terms_Conditions import TermsConditions
+		welcome_frame = TermsConditions(self.master)
 		welcome_frame.pack(side="top", expand=True, fill="both")
