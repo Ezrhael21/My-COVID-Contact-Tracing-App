@@ -1,5 +1,6 @@
 import customtkinter as ctk
 from Personal_Info import PersonalInfo
+from tkinter import messagebox
 
 class TermsConditions(ctk.CTkFrame):
 	def __init__(self,parent):
@@ -34,10 +35,6 @@ class TermsConditions(ctk.CTkFrame):
 		next_button = ctk.CTkButton(self, text = "NEXT", command = self.show_personal_info)
 		back_button.grid(row=5, column=0, padx=10, pady=10)
 		next_button.grid(row=5, column=1, padx=10, pady=10)
-	
-	def check_box(self):
-		check_box = ctk.CTkCheckBox(self, text="I Accept the Terms and Conditions")
-		check_box.place(x=50, y=450)
 
 	def show_welcome(self):
 		self.pack_forget()
@@ -47,7 +44,21 @@ class TermsConditions(ctk.CTkFrame):
 		personal_info_frame.pack(side="top", expand=True, fill="both")	
 
 	def show_personal_info(self):
-		self.pack_forget()
-		personal_info_frame = PersonalInfo(self.master)
-		personal_info_frame.pack(side="top", expand=True, fill="both")	
+		if self.redirect_var.get()=="Accepted":
+			self.pack_forget()
+			personal_info_frame = PersonalInfo(self.master)
+			personal_info_frame.pack(side="top", expand=True, fill="both")	
+		else:
+			messagebox.showinfo("Message", "Please accept the terms and conditions to proceed.")
+	
+	def check_box(self):
+		self.redirect_var = ctk.StringVar(value="Not Accepted")
+		check_box = ctk.CTkCheckBox(self, text="I Accept the Terms and Conditions", variable=self.redirect_var, command=self.toggle_next_button, onvalue="Accepted", offvalue="Not Accpeted")
+		check_box.place(x=50, y=450)
+	
+	def toggle_next_button(self):
+		if self.redirect_var.get() == "Accepted":
+			self.next_button.config(state=ctk.NORMAL)
+		else:
+			self.next_button.config(state=ctk.DISABLED)
 
