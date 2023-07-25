@@ -1,4 +1,5 @@
 import customtkinter as ctk
+from User_Personal_Info import UserData
 
 class PersonalInfo(ctk.CTkFrame):
 	def __init__(self,parent):
@@ -41,6 +42,22 @@ class PersonalInfo(ctk.CTkFrame):
 		contacts_entry.place(x=400, y=300)
 		email_entry.place(x=400, y=350)
 		address_entry.place(x=400, y=400)
+		
+		# Get Entry Values for Personal Information
+		name = name_entry.get()
+		age = age_entry.get()
+		birthday = birthday_entry.get()
+		gender = gender_entry.get()
+		contacts = contacts_entry.get()
+		email = email_entry.get()
+		address = address_entry.get()
+
+		# Create the user data object
+		user_personal_info = UserData(name, age, birthday, gender, contacts, email, address)
+		
+        # Save the UserData object to a JSON file
+		user_personal_info.save_to_json_file("user_data.json")
+
 
 	def create_buttons(self):
 		self.columnconfigure((0,1), weight = 1)
