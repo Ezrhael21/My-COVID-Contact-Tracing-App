@@ -89,7 +89,7 @@ class Search(ctk.CTkFrame):
 			self.output_contacts.configure(text=f"Contact Number: {found_data['contacts']}")
 			self.output_email.configure(text=f"Email Address: {found_data['email']}")
 			self.output_address.configure(text=f"Current Home Address: {found_data['address']}")
-			self.output_covid_positive.configure(text=f"Have you tested positive for covid 19 {found_data['covid_positive']}")
+			self.output_covid_positive.configure(text=f"Have you tested positive for covid 19? {found_data['covid_positive']}")
 		else:
 			messagebox.showinfo("Error", "Reference number not found.")
 			self.output_name.configure(text="Name:")
