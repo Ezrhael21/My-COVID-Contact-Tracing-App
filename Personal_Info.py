@@ -24,6 +24,7 @@ class PersonalInfo(ctk.CTkFrame):
 		contacts_label = ctk.CTkLabel(self, text = "Contact Number:")
 		email_label = ctk.CTkLabel(self, text = "Email Address:")
 		address_label = ctk.CTkLabel(self, text = "Current Home Address:")
+		covid_positive_label = ctk.CTkLabel(self, text = "Have you tested positive for covid 19? (Yes/No)")
 
 		# Layout for Label
 		info_label.place(x=50, y=50)
@@ -34,6 +35,7 @@ class PersonalInfo(ctk.CTkFrame):
 		contacts_label.place(x=50, y=300)
 		email_label.place(x=50, y=350)
 		address_label.place(x=50, y=400)
+		covid_positive_label.place(x=50, y=450)
 
 		# Entry Widgets
 		self.name_entry = ctk.CTkEntry(self)
@@ -43,6 +45,7 @@ class PersonalInfo(ctk.CTkFrame):
 		self.contacts_entry = ctk.CTkEntry(self)
 		self.email_entry = ctk.CTkEntry(self)
 		self.address_entry = ctk.CTkEntry(self)
+		self.covid_positive_entry = ctk.CTkEntry(self)
 
 		# Layout for Entry Widgets
 		self.name_entry.place(x=400, y=100)
@@ -52,6 +55,7 @@ class PersonalInfo(ctk.CTkFrame):
 		self.contacts_entry.place(x=400, y=300)
 		self.email_entry.place(x=400, y=350)
 		self.address_entry.place(x=400, y=400)
+		self.covid_positive_entry.place(x=400, y=450)
 
 	# Method to create the Back/Submit Buttons
 	def create_buttons(self):
@@ -106,10 +110,17 @@ class PersonalInfo(ctk.CTkFrame):
 		contacts = self.contacts_entry.get()
 		email = self.email_entry.get()
 		address = self.address_entry.get()
+		covid_positive = self.covid_positive_entry.get()
 
 		# Add message box that will require user to provide all information
 		if not name or not age or not birthday or not gender or not contacts or not email or not address:
 			messagebox.showinfo("Message", "Please provide all information.")
+			return
+		
+		# Validate the inputs for COVID Postive Question
+		valid_inputs = {"Yes", "No"}
+		if covid_positive not in valid_inputs:
+			messagebox.showinfo("Error", "Please enter 'Yes' or 'No' for COVID and Travel questions.")
 			return
 
         # Generate a reference number for the user
@@ -124,7 +135,8 @@ class PersonalInfo(ctk.CTkFrame):
 			"contacts": contacts,
 			"email": email,
 			"address": address,
-			"reference_number": reference_number
+			"reference_number": reference_number,
+			"covid_positive": covid_positive
 			}
 
 		# Try to open the existing JSON file or create a new one if not found
@@ -152,5 +164,6 @@ class PersonalInfo(ctk.CTkFrame):
 		self.contacts_entry.delete(0, END)
 		self.email_entry.delete(0, END)
 		self.address_entry.delete(0, END)
+		self.covid_positive_entry.delete(0, END)
 
 

@@ -44,6 +44,9 @@ class Search(ctk.CTkFrame):
 
 		self.output_address = ctk.CTkLabel(self, text="Current Home Address:")
 		self.output_address.place(x=50, y=400)	
+		
+		self.output_covid_positive = ctk.CTkLabel(self, text = "Have you tested positive for covid 19?")
+		self.output_covid_positive.place(x=50, y=450)
 
 	# Method to create buttons
 	def create_buttons(self):
@@ -86,6 +89,7 @@ class Search(ctk.CTkFrame):
 			self.output_contacts.configure(text=f"Contact Number: {found_data['contacts']}")
 			self.output_email.configure(text=f"Email Address: {found_data['email']}")
 			self.output_address.configure(text=f"Current Home Address: {found_data['address']}")
+			self.output_covid_positive.configure(text=f"Have you tested positive for covid 19 {found_data['covid_positive']}")
 		else:
 			messagebox.showinfo("Error", "Reference number not found.")
 			self.output_name.configure(text="Name:")
@@ -94,7 +98,8 @@ class Search(ctk.CTkFrame):
 			self.output_gender.configure(text="Gender:")
 			self.output_contacts.configure(text="Contact Number:")
 			self.output_email.configure(text="Email Address:")
-			self.output_address.configure(text="Current Home Address")
+			self.output_address.configure(text="Current Home Address:")
+			self.output_address.configure(text="Have you tested positive for covid 19?")
 
 	# Method to exit the app with a confirmation message box
 	def ask_exit(self):
