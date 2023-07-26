@@ -1,8 +1,8 @@
 [
     {
         "name": "John",
-        "age": "50",
-        "birthday": "August 5, 2023",
+        "age": "49",
+        "birthday": "August 5, 1973",
         "gender": "Male",
         "contacts": "091845758",
         "email": "john@gmail.com",
@@ -13,7 +13,7 @@
     {
         "name": "Cobi",
         "age": "21",
-        "birthday": "July 5, 2023",
+        "birthday": "July 5, 2002",
         "gender": "Male",
         "contacts": "0944548713",
         "email": "cobi@gmail.com",
