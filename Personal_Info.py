@@ -139,12 +139,9 @@ class PersonalInfo(ctk.CTkFrame):
 			"covid_positive": covid_positive
 			}
 
-		# Try to open the existing JSON file or create a new one if not found
-		try:		 		
-			with open("user_data.json", "r") as file:
-				user_data = json.load(file)
-		except FileNotFoundError:
-			user_data = []
+		# Try to open the existing JSON file
+		with open("user_data.json", "r") as file:
+			user_data = json.load(file)
 
 		# Append the new data to the existing user_data list
 		user_data.append(data)
