@@ -1,6 +1,6 @@
 import customtkinter as ctk
-from User_Personal_Info import UserData
 from tkinter import messagebox
+from tkinter import END
 import json
 import random
 
@@ -57,7 +57,7 @@ class PersonalInfo(ctk.CTkFrame):
 		self.columnconfigure((0,1), weight = 1)
 		self.rowconfigure((0,1,2,3,4,5), weight = 1)
 		back_button = ctk.CTkButton(self, text = "BACK", command = self.show_terms_conditions)
-		next_button = ctk.CTkButton(self, text = "SUBMIT", command = self.save_to_json)
+		next_button = ctk.CTkButton(self, text = "SAVE", command = self.save_to_json)
 		back_button.grid(row=5, column=0, padx=10, pady=10)
 		next_button.grid(row=5, column=1, padx=10, pady=10)
 
@@ -85,32 +85,50 @@ class PersonalInfo(ctk.CTkFrame):
 	
 	# Method to save to json file
 	def save_to_json(self):
-		try:
 		# Get Entry Values for Personal Information
-			name = self.name_entry.get()
-			age = self.age_entry.get()
-			birthday = self.birthday_entry.get()
-			gender = self.gender_entry.get()
-			contacts = self.contacts_entry.get()
-			email = self.email_entry.get()
-			address = self.address_entry.get()
+		name = self.name_entry.get()
+		age = self.age_entry.get()
+		birthday = self.birthday_entry.get()
+		gender = self.gender_entry.get()
+		contacts = self.contacts_entry.get()
+		email = self.email_entry.get()
+		address = self.address_entry.get()
 
-            # Generate a reference number for the user
-			reference_number = self.generate_reference_number(name, age)
+		# Add message box that will require user to provide all information
+		if not name or not age or not birthday or not gender or not contacts or not email or not address:
+			messagebox.showinfo("Message", "Please provide all information.")
+			return
+
+        # Generate a reference number for the user
+		reference_number = self.generate_reference_number(name, age)
 			
-			# Create the user data object
-			user_personal_info = UserData(name, age, birthday, gender, contacts, email, address, reference_number)
+		# Create the user data object
+		data = {
+			"name": self.name,
+			"age": self.age,
+			"birthday": self.birthday,
+			"gender": self.gender,
+			"contacts": self.contacts,
+			"email": self.email,
+			"address": self.address,
+			"reference_number": self.reference_number
+			}
 
-			# Save the UserData object to a JSON file
-			with open("user_data.json", "w") as file:
-				file.write(user_personal_info.to_json())
+		# Try to open the existing JSON file or create a new one if not found
+		try:		 		
+			with open("user_data.json", "r") as file:
+				user_data = json.load(file)
+		except FileNotFoundError:
+			user_data = []
 
-            # Show the reference number to the user
-			messagebox.showinfo("Reference Number", f"Your reference number is: {reference_number}")			
+		# Append the new data to the existing user_data list
+		user_data.append(data)
 
-		except ValueError:
-			messagebox.showinfo("Message", "Please answer all the required information.")
+		# Save the updated user_data list to the JSON file
+		with open("user_data.json", "w") as file:
+			json.dump(user_data, file, indent=4)
 		
-        	
+		# Show a success message with the reference number
+		messagebox.showinfo("Success", f"Data saved to JSON file.\nYour reference number: {reference_number}")
 
 
