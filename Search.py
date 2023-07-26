@@ -51,7 +51,7 @@ class Search(ctk.CTkFrame):
 		self.rowconfigure((0,1,2,3,4,5), weight = 1)
 		back_button = ctk.CTkButton(self, text = "BACK", command = self.show_personal_info)
 		search_button = ctk.CTkButton(self, text = "SEARCH", command = self.search_data)
-		exit_button = ctk.CTkButton(self, text = "EXIT")
+		exit_button = ctk.CTkButton(self, text = "EXIT", command = self.ask_exit)
 		back_button.grid(row=5, column=0, padx=10, pady=10)
 		search_button.grid(row=5, column=1, padx=10, pady=10)
 		exit_button.grid(row=5, column=2, padx=10, pady=10)
@@ -95,3 +95,12 @@ class Search(ctk.CTkFrame):
 			self.output_contacts.configure(text="Contact Number:")
 			self.output_email.configure(text="Email Address:")
 			self.output_address.configure(text="Current Home Address")
+
+	# Method to exit the app with a confirmation message box
+	def ask_exit(self):
+		result = messagebox.askquestion("Confirm Exit", "Are you sure you want to exit?")
+		if result == "yes":
+			self.exit_app()
+			
+	def exit_app(self):
+		self.master.destroy()
