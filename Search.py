@@ -8,7 +8,21 @@ class Search(ctk.CTkFrame):
 		self.create_buttons()
 		
 	def create_widgets(self):
-		pass
+		# Label
+		search_label = ctk.CTkLabel(self, text = "Search: (Enter Reference Number)")
+
+		# Layout
+		search_label.place(x=50, y=50)
+
+		# Entry Widgets
+		self.name_entry = ctk.CTkEntry(self)
+
+		# Layout for Entry Widgets
+		self.name_entry.place(x=400, y=50)
+
+	
+
+
 
 	# Method to create buttons
 	def create_buttons(self):
