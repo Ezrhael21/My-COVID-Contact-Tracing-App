@@ -104,14 +104,14 @@ class PersonalInfo(ctk.CTkFrame):
 			
 		# Create the user data object
 		data = {
-			"name": self.name,
-			"age": self.age,
-			"birthday": self.birthday,
-			"gender": self.gender,
-			"contacts": self.contacts,
-			"email": self.email,
-			"address": self.address,
-			"reference_number": self.reference_number
+			"name": name,
+			"age": age,
+			"birthday": birthday,
+			"gender": gender,
+			"contacts": contacts,
+			"email": email,
+			"address": address,
+			"reference_number": reference_number
 			}
 
 		# Try to open the existing JSON file or create a new one if not found
