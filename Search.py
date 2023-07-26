@@ -105,7 +105,7 @@ class Search(ctk.CTkFrame):
 			self.output_contacts.configure(text="Contact Number:")
 			self.output_email.configure(text="Email Address:")
 			self.output_address.configure(text="Current Home Address:")
-			self.output_address.configure(text="Have you tested positive for covid 19?")
+			self.output_covid_positive.configure(text="Have you tested positive for covid 19?")
 
 	# Method to exit the app with a confirmation message box
 	def ask_exit(self):
