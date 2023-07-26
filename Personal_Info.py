@@ -120,7 +120,7 @@ class PersonalInfo(ctk.CTkFrame):
 		# Validate the inputs for COVID Postive Question
 		valid_inputs = {"Yes", "No"}
 		if covid_positive not in valid_inputs:
-			messagebox.showinfo("Error", "Please enter 'Yes' or 'No' for COVID and Travel questions.")
+			messagebox.showinfo("Error", "Please enter 'Yes' or 'No' for COVID positive question.")
 			return
 
         # Generate a reference number for the user
