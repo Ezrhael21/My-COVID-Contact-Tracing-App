@@ -1,6 +1,7 @@
 import customtkinter as ctk
 from tkinter import messagebox
 from tkinter import END
+from Search import Search
 import json
 import random
 
@@ -54,12 +55,24 @@ class PersonalInfo(ctk.CTkFrame):
 
 	# Method to create the Back/Submit Buttons
 	def create_buttons(self):
-		self.columnconfigure((0,1), weight = 1)
+		self.columnconfigure((0,1,2), weight = 1)
 		self.rowconfigure((0,1,2,3,4,5), weight = 1)
 		back_button = ctk.CTkButton(self, text = "BACK", command = self.show_terms_conditions)
-		next_button = ctk.CTkButton(self, text = "SAVE", command = self.save_to_json)
+		save_button = ctk.CTkButton(self, text = "SAVE", command = self.save_to_json)
+		next_button = ctk.CTkButton(self, text = "NEXT", command = self.show_search_frame)
 		back_button.grid(row=5, column=0, padx=10, pady=10)
-		next_button.grid(row=5, column=1, padx=10, pady=10)
+		save_button.grid(row=5, column=1, padx=10, pady=10)
+		next_button.grid(row=5, column=2, padx=10, pady=10)
+
+
+	# Method to redirect the current frame to Terms & Conditions
+	def show_search_frame(self):
+		# Hide the current Welcome frame
+		self.pack_forget()
+	
+		# Call the Terms & Condtions Frame
+		search_frame = Search(self.master)
+		search_frame.pack(side="top", expand=True, fill="both")	
 
 	# Method to redirect to Terms & Conditions
 	def show_terms_conditions(self):
