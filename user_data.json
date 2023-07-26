@@ -7,15 +7,5 @@
         "contacts": "contacts",
         "email": "email",
         "address": "address"
-    },
-    {
-        "name": "d",
-        "age": "s",
-        "birthday": "ss",
-        "gender": "s",
-        "contacts": "s",
-        "email": "ss",
-        "address": "s",
-        "reference_number": "ds9658"
     }
 ]

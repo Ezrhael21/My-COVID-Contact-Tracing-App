@@ -131,4 +131,13 @@ class PersonalInfo(ctk.CTkFrame):
 		# Show a success message with the reference number
 		messagebox.showinfo("Success", f"Data saved to JSON file.\nYour reference number: {reference_number}")
 
+        # Clear the input fields
+		self.name_entry.delete(0, END)
+		self.age_entry.delete(0, END)
+		self.birthday_entry.delete(0, END)
+		self.gender_entry.delete(0, END)
+		self.contacts_entry.delete(0, END)
+		self.email_entry.delete(0, END)
+		self.address_entry.delete(0, END)
+
 
